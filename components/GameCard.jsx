@@ -1,19 +1,26 @@
 import { useEffect, useRef } from "react";
 import { View, Text, Image, StyleSheet, Animated } from "react-native";
+import { Score } from "./Score";
 
 export function GameCard({ game }) {
   return (
-    <View key={game.slug} style={styles.card}>
-      <View style={styles.header}>
+    <View
+      className="flex-row bg-slate-500/20 p-3 rounded-xl gap-4 mb-7"
+      key={game.slug}
+    >
+      <Image source={{ uri: game.image }} style={styles.image} />
+
+      <View>
         <View style={styles.circle}>
-          <Text style={styles.score}>{game.score}</Text>
+          <Score score={game.score} maxScore={100} />
         </View>
+        <Text className="mb-1" style={styles.title}>
+          {game.title}
+        </Text>
+        <Text className="mt-2 flex-shrink" style={styles.description}>
+          {game.description.slice(0, 100)} ...
+        </Text>
       </View>
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: game.image }} style={styles.image} />
-      </View>
-      <Text style={styles.title}>{game.title}</Text>
-      <Text style={styles.description}>{game.description}</Text>
     </View>
   );
 }
@@ -44,23 +51,21 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-  header: {
-    alignItems: "flex-end",
-  },
+  // header: {
+  //   alignItems: "flex-end",
+  // },
   circle: {
     justifyContent: "center",
     alignItems: "center",
-    width: 40,
-    height: 40,
-    borderRadius: 20, // La mitad del ancho y la altura para hacer un círculo
+    width: 30,
+    height: 30,
+    borderRadius: 15, // La mitad del ancho y la altura para hacer un círculo
     borderColor: "green",
     borderWidth: 2,
-    marginTop: 10,
-    marginBottom: 5,
   },
   score: {
     color: "green",
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
   },
   imageContainer: {
@@ -80,6 +85,6 @@ const styles = StyleSheet.create({
   },
   description: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: 18,
   },
 });
