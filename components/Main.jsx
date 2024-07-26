@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
-import { View, ActivityIndicator, FlatList, Text } from "react-native";
+import { Link } from "expo-router";
+import {
+  View,
+  ActivityIndicator,
+  FlatList,
+  Text,
+  Pressable,
+} from "react-native";
 import { getLatestGames } from "../lib/metacritic";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimatedGameCard } from "./GameCard";
 import { Logo } from "./Logo";
+import { InfoIcon } from "./Icons";
+
+import { styled } from "nativewind";
+
+const StyledPressable = styled(Pressable);
 
 export function Main() {
   const [games, setGames] = useState([]);
@@ -23,6 +35,11 @@ export function Main() {
           KLINY
         </Text>
       </View>
+      <Link asChild href="/about" className="mb-2">
+        <StyledPressable className={`active:opacity-50`}>
+          <InfoIcon />
+        </StyledPressable>
+      </Link>
       {games.length === 0 ? (
         <ActivityIndicator size={"large"} />
       ) : (
