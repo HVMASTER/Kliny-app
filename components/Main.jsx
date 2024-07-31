@@ -28,18 +28,7 @@ export function Main() {
   }, []);
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View style={{ marginBottom: 10 }}>
-        <Logo />
-        <Text style={{ color: "#fff", fontSize: 20, fontWeight: "bold" }}>
-          KLINY
-        </Text>
-      </View>
-      <Link asChild href="/about" className="mb-2">
-        <StyledPressable className={`active:opacity-50`}>
-          <InfoIcon />
-        </StyledPressable>
-      </Link>
+    <View className="bg-black">
       {games.length === 0 ? (
         <ActivityIndicator size={"large"} />
       ) : (

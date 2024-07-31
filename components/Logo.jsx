@@ -3,9 +3,9 @@ import Svg, { Path } from "react-native-svg";
 export const Logo = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={176}
+    width={40}
     height={40}
-    viewBox="350 0 1024 1000"
+    viewBox="50 0 1024 1000"
     {...props}
   >
     <Path
